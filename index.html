@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>
+        Background Worker Application Example 1: Complicated Number Computation 
+    </title>
+    </head>
+    <body>
+    <div>
+        The least common multiple and greatest common divisor is:
+        <p id="computation_results">please wait, computing … </p>
+    </div>
+        <script>
+            var worker = new Worker('lib/numberworker.js');
+            worker.postMessage({first:347734080,second:3423744400});
+            worker.onmessage = function (event){
+                document.getElementById('computation_results').textContent = event.data;
+            };
+        </script>
+    </body>
+</html>
